@@ -1,0 +1,662 @@
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #142b46 0%,
+            #050a11 100%
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: none;
+}
+
+
+body {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+#jogo {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   CANVAS
+========================================== */
+
+#canvas {
+
+    display: block;
+
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: contain;
+
+    background: #0b1724;
+
+    cursor: none;
+
+    touch-action: none;
+}
+
+
+/* ==========================================
+   TELAS
+========================================== */
+
+.tela {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(10, 40, 65, 0.45),
+            rgba(0, 0, 0, 0.82)
+        );
+
+    backdrop-filter: blur(4px);
+
+    z-index: 20;
+}
+
+
+.escondido {
+
+    display: none !important;
+}
+
+
+/* ==========================================
+   PAINEL
+========================================== */
+
+.painel {
+
+    width: min(92vw, 430px);
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 38, 58, 0.98),
+            rgba(5, 13, 23, 0.98)
+        );
+
+    border:
+
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 24px;
+
+    box-shadow:
+
+        0 25px 80px
+        rgba(0, 0, 0, 0.75),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.08);
+
+    animation:
+        aparecer 0.25s ease;
+}
+
+
+.painel.pequeno {
+
+    width: min(92vw, 380px);
+}
+
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.92)
+            translateY(10px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo-pato {
+
+    font-size: 70px;
+
+    margin-bottom: 5px;
+
+    filter:
+        drop-shadow(
+            0 8px 10px
+            rgba(0, 0, 0, 0.5)
+        );
+}
+
+
+.caixa-menu h1,
+.painel h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(35px, 8vw, 58px);
+
+    letter-spacing: 3px;
+
+    line-height: 1;
+
+    text-shadow:
+
+        0 4px 0 #000,
+
+        0 8px 20px
+        rgba(0, 0, 0, 0.6);
+}
+
+
+.painel h2 {
+
+    margin:
+        5px 0 12px;
+
+    font-size: 30px;
+
+    text-shadow:
+        0 3px 8px #000;
+}
+
+
+.subtitulo {
+
+    margin:
+        12px 0 25px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    color: #74c7ff;
+}
+
+
+.painel p {
+
+    color: #c9d5df;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   BOTÕES
+========================================== */
+
+.botao {
+
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 12px;
+
+    padding:
+        12px 18px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.12s,
+        filter 0.12s,
+        background 0.12s;
+}
+
+
+.botao:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+.botao.principal {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2989ff,
+            #1556bb
+        );
+
+    box-shadow:
+        0 7px 20px
+        rgba(22, 111, 220, 0.35);
+}
+
+
+.botao.principal:hover {
+
+    filter: brightness(1.15);
+}
+
+
+.botao.secundario {
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+}
+
+
+.botao.secundario:hover {
+
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================================
+   AJUDA
+========================================== */
+
+.ajuda {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-top: 22px;
+
+    color: #9eacb8;
+
+    font-size: 12px;
+}
+
+
+.icone-grande {
+
+    font-size: 60px;
+
+    margin-bottom: 5px;
+}
+
+
+.resultado {
+
+    margin:
+        15px 0;
+
+    padding:
+        13px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    color: #fff;
+
+    font-size: 19px;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   GAME OVER
+========================================== */
+
+#imagemFim {
+
+    display: block;
+
+    width: min(220px, 70%);
+
+    height: 140px;
+
+    object-fit: contain;
+
+    margin:
+        0 auto 8px;
+
+    filter:
+        drop-shadow(
+            0 8px 15px
+            rgba(0, 0, 0, 0.6)
+        );
+}
+
+
+/* ==========================================
+   CONTROLES PC
+========================================== */
+
+#controlesPC {
+
+    position: absolute;
+
+    left: 12px;
+    bottom: 10px;
+
+    z-index: 5;
+
+    padding:
+        7px 10px;
+
+    border-radius: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 11px;
+
+    pointer-events: none;
+
+    backdrop-filter: blur(4px);
+}
+
+
+/* ==========================================
+   CONTROLES CELULAR
+========================================== */
+
+#controlesMobile {
+
+    position: absolute;
+
+    right: 15px;
+    bottom: 15px;
+
+    z-index: 10;
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+}
+
+
+.controle {
+
+    width: 54px;
+    height: 54px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.35);
+
+    color: white;
+
+    background:
+        rgba(0, 0, 0, 0.62);
+
+    font-size: 22px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.4);
+
+    touch-action: manipulation;
+}
+
+
+.controle:active {
+
+    transform:
+        scale(0.88);
+
+    background:
+        rgba(30, 120, 220, 0.8);
+}
+
+
+/* ==========================================
+   FLASH
+========================================== */
+
+#flashTiro {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 15;
+
+    pointer-events: none;
+
+    background:
+        rgba(255, 245, 180, 0.25);
+
+    animation:
+        flash 0.12s linear;
+}
+
+
+@keyframes flash {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media (max-width: 700px) {
+
+    #canvas {
+
+        width: 100vw;
+        height: 100vh;
+
+        object-fit: cover;
+
+        cursor: default;
+    }
+
+
+    #controlesPC {
+
+        display: none;
+    }
+
+
+    #controlesMobile {
+
+        display: flex;
+    }
+
+
+    .painel {
+
+        padding:
+            28px 22px;
+
+        border-radius: 20px;
+    }
+
+
+    .logo-pato {
+
+        font-size: 55px;
+    }
+
+
+    .painel h1 {
+
+        font-size: 38px;
+    }
+
+
+    .painel h2 {
+
+        font-size: 26px;
+    }
+
+
+    .controle {
+
+        width: 50px;
+        height: 50px;
+
+        font-size: 20px;
+    }
+}
+
+
+/* ==========================================
+   CELULAR DEITADO
+========================================== */
+
+@media (
+    max-height: 500px
+) and (
+    orientation: landscape
+) {
+
+    .painel {
+
+        padding:
+            15px 25px;
+
+        max-height: 92vh;
+
+        overflow-y: auto;
+    }
+
+
+    .logo-pato {
+
+        display: none;
+    }
+
+
+    .painel h1 {
+
+        font-size: 32px;
+    }
+
+
+    .painel h2 {
+
+        font-size: 23px;
+    }
+
+
+    .botao {
+
+        min-height: 42px;
+
+        margin-top: 7px;
+    }
+
+
+    .ajuda {
+
+        margin-top: 10px;
+    }
+}

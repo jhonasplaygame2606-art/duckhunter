@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>Duck Hunter</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main id="jogo">
+
+        <canvas id="canvas"></canvas>
+
+
+        <!-- =========================
+             MENU
+        ========================== -->
+
+        <section
+            id="menu"
+            class="tela"
+        >
+
+            <div class="painel">
+
+                <div class="logo-pato">
+                    🦆
+                </div>
+
+                <h1>
+                    DUCK HUNTER
+                </h1>
+
+                <p class="subtitulo">
+                    CAÇA AOS PATOS
+                </p>
+
+
+                <button
+                    id="btnJogar"
+                    class="botao principal"
+                >
+                    JOGAR
+                </button>
+
+
+                <button
+                    id="btnTelaCheiaMenu"
+                    class="botao secundario"
+                >
+                    ⛶ TELA CHEIA
+                </button>
+
+
+                <div class="ajuda">
+
+                    <span>
+                        🖱️ PC: clique no pato
+                    </span>
+
+                    <span>
+                        📱 Celular: toque no pato
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PAUSA
+        ========================== -->
+
+        <section
+            id="pausa"
+            class="tela escondido"
+        >
+
+            <div class="painel">
+
+                <div class="icone-grande">
+                    ⏸
+                </div>
+
+                <h2>
+                    JOGO PAUSADO
+                </h2>
+
+                <p>
+                    O jogo está parado.
+                </p>
+
+
+                <button
+                    id="btnContinuar"
+                    class="botao principal"
+                >
+                    CONTINUAR
+                </button>
+
+
+                <button
+                    id="btnReiniciarPausa"
+                    class="botao secundario"
+                >
+                    🔄 REINICIAR
+                </button>
+
+
+                <button
+                    id="btnMenuPausa"
+                    class="botao secundario"
+                >
+                    🏠 MENU
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GAME OVER
+        ========================== -->
+
+        <section
+            id="gameOver"
+            class="tela escondido"
+        >
+
+            <div class="painel">
+
+                <img
+                    id="imagemFim"
+                    src="fim.png"
+                    alt="Fim de jogo"
+                >
+
+
+                <h2>
+                    FIM DE JOGO
+                </h2>
+
+
+                <div
+                    id="resultadoFinal"
+                    class="resultado"
+                >
+                    Pontos: 0
+                </div>
+
+
+                <button
+                    id="btnReiniciar"
+                    class="botao principal"
+                >
+                    🔄 JOGAR NOVAMENTE
+                </button>
+
+
+                <button
+                    id="btnMenuFim"
+                    class="botao secundario"
+                >
+                    🏠 MENU
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FASE COMPLETA
+        ========================== -->
+
+        <section
+            id="faseCompleta"
+            class="tela escondido"
+        >
+
+            <div class="painel pequeno">
+
+                <div class="icone-grande">
+                    🏆
+                </div>
+
+                <h2>
+                    FASE COMPLETA!
+                </h2>
+
+                <p id="textoFase">
+                    Fase 1
+                </p>
+
+                <div
+                    id="textoPontosFase"
+                    class="resultado"
+                >
+                    0 pontos
+                </div>
+
+                <button
+                    id="btnProximaFase"
+                    class="botao principal"
+                >
+                    PRÓXIMA FASE
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTROLES MOBILE
+        ========================== -->
+
+        <div
+            id="controlesMobile"
+            class="escondido"
+        >
+
+            <button
+                id="btnAtirar"
+                class="controle"
+            >
+                🔫
+            </button>
+
+
+            <button
+                id="btnPausaMobile"
+                class="controle"
+            >
+                ⏸
+            </button>
+
+
+            <button
+                id="btnTelaCheia"
+                class="controle"
+            >
+                ⛶
+            </button>
+
+
+            <button
+                id="btnMenuMobile"
+                class="controle"
+            >
+                ☰
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INDICAÇÃO PC
+        ========================== -->
+
+        <div id="controlesPC">
+
+            🖱️ Clique no pato para atirar
+            &nbsp; • &nbsp;
+            P / ESC: Pausar
+            &nbsp; • &nbsp;
+            R: Reiniciar
+            &nbsp; • &nbsp;
+            M: Menu
+            &nbsp; • &nbsp;
+            F11: Tela cheia
+
+        </div>
+
+
+        <!-- =========================
+             FLASH DO TIRO
+        ========================== -->
+
+        <div
+            id="flashTiro"
+            class="escondido"
+        ></div>
+
+    </main>
+
+
+    <script src="game.js"></script>
+
+</body>
+
+</html>
